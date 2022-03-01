@@ -11,7 +11,7 @@ export const ThemeBtn = (props: IThemeBtn) => {
       onClick={() => {
         props.setTheme(props.colorTheme)
       }}
-      className=' cursor-pointer flex items-center justify-center w-9 h-9'>
+      className=' cursor-pointer flex items-center self-end w-9 h-9'>
       {props.colorTheme === 'light' ? (
         <svg
           xmlns='http://www.w3.org/2000/svg'

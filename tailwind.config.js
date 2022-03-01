@@ -19,6 +19,7 @@ module.exports = {
       backgroundColor: {
         primary: 'var(--color-bg-primary)',
         secondary: 'var(--color-bg-secondary)',
+        contrast: 'var(--color-bg-contrast)',
       },
       textColor: {
         accent: 'var(--color-text-accent)',

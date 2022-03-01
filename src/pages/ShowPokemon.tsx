@@ -2,20 +2,20 @@ import { Link, useParams } from 'react-router-dom'
 import { PokemonInfo } from '../components/PokemonInfo'
 import { usePokemonByID } from './../hooks/usePokemon'
 
-type PokemonParams = { id: string }
+type pokemonParams = { id?: string; name?: string }
 
 export const ShowPokemon = () => {
-  const { id } = useParams<PokemonParams>()
-  const checkID = () => {
-    if (id === undefined) {
-      const undefID: string = 'error'
-      return undefID
+  const { name, id } = useParams<pokemonParams>()
+
+  const checkParamUndef = (param: string | undefined) => {
+    if (param === undefined) {
+      const undefParam: string = 'error'
+      return undefParam
     } else {
-      return id
+      return param
     }
   }
-  const pokemon = usePokemonByID(checkID())
-
+  const pokemon = usePokemonByID(checkParamUndef(name || id))
   if (pokemon.isLoading) {
     return (
       <>
@@ -46,5 +46,14 @@ export const ShowPokemon = () => {
         <PokemonInfo pokemon={pokemon.data}></PokemonInfo>
       </>
     )
-  } else return <div>oops</div>
+  } else
+    return (
+      <>
+        <div className='mt-20'></div>
+        <Link to={'/'}>
+          <div className='p-2 bg-orange-400 w-16'>Back</div>
+        </Link>
+        <div>Loading...</div>
+      </>
+    )
 }

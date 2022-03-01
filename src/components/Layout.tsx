@@ -8,7 +8,7 @@ export const Layout = ({ children }: ILayout) => {
   return (
     <>
       <Nav />
-      <div className='mt-20'>
+      <div className="mt-24">
         <main>{children}</main>
       </div>
     </>

@@ -4,7 +4,6 @@ import { Result } from './../interfaces/pokemon'
 
 export const PokedexTile = (props: Result) => {
   const pokemon = usePokemonByName(props.name)
-  
   if (pokemon.isError) {
     return (
       <div className=' bg-secondary flex flex-wrap min-w-full rounded-lg overflow-hidden'>
@@ -14,10 +13,10 @@ export const PokedexTile = (props: Result) => {
   }
   if (pokemon.isLoading) {
     return (
-      <div className=' bg-secondary flex flex-wrap min-w-full rounded-lg overflow-hidden'>
-        <div className='flex justify-between min-w-full px-2'>
+      <div className='p-1 flex flex-wrap w-full md:w-full lg:w-1/2 xl:w-1/3 2xl:w-1/4'>
+        <div className=' bg-secondary flex flex-wrap min-w-full rounded-lg overflow-hidden'>
+          <div className='flex justify-between min-w-full px-2'>Loading...</div>
         </div>
-        <div className='flex min-w-full'></div>
       </div>
     )
   }
@@ -25,7 +24,7 @@ export const PokedexTile = (props: Result) => {
     return (
       <div className='p-1 flex flex-wrap w-full md:w-full lg:w-1/2 xl:w-1/3 2xl:w-1/4'>
         <Link
-          to={`/pokemon/${pokemon.data.id}`}
+          to={`/pokemon/${pokemon.data.name}`}
           key={pokemon.data.id}
           className=' bg-secondary flex flex-wrap min-w-full rounded-lg overflow-hidden'>
           <div className='flex justify-between min-w-full px-2'>
