@@ -4,7 +4,7 @@ import { IPokemon } from '../interfaces/pokemon'
 
 export const PokemonInfo = ({ pokemon }: { pokemon: IPokemon }) => {
   return (
-    <div>
+    <>
       <Link to={'/'}>
         <div className='p-2 bg-orange-400 w-16'>Back</div>
       </Link>
@@ -16,6 +16,6 @@ export const PokemonInfo = ({ pokemon }: { pokemon: IPokemon }) => {
         Type: {pokemon.types[0]?.type.name} {pokemon.types[1]?.type.name}
       </div>
       <img src={pokemon.sprites.front_default} />
-    </div>
+    </>
   )
 }

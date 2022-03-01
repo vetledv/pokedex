@@ -1,5 +1,4 @@
 import { Link, useParams } from 'react-router-dom'
-import { Nav } from '../components/nav/Nav'
 import { PokemonInfo } from '../components/PokemonInfo'
 import { usePokemonByID } from './../hooks/usePokemon'
 
@@ -47,12 +46,5 @@ export const ShowPokemon = () => {
         <PokemonInfo pokemon={pokemon.data}></PokemonInfo>
       </>
     )
-  } else {
-    return (
-      <>
-        <div className='mt-20'></div>
-        <div>oops</div>
-      </>
-    )
-  }
+  } else return <div>oops</div>
 }
