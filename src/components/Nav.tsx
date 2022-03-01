@@ -3,11 +3,10 @@ import { useDarkMode } from '../hooks/useDarkMode'
 export const Nav = () => {
   const [colorTheme, setTheme] = useDarkMode()
   return (
-    <div className='fixed top-0 w-full bg-secondary p-5'>
+    <div className='fixed top-0 w-full bg-secondary p-5 flex justify-end'>
       <span
         onClick={() => {
           setTheme(colorTheme)
-          console.log(colorTheme)
         }}
         className=' cursor-pointer flex items-center justify-center w-9 h-9'>
         {colorTheme === 'light' ? (

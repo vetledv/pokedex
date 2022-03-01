@@ -1,28 +1,32 @@
-import { useState } from 'react'
+import { StrictMode } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { IPokemon, Result } from './interfaces/pokemon'
 import { FrontPage } from './pages/FrontPage'
 import { ShowPokemon } from './pages/ShowPokemon'
+import { QueryClient, QueryClientProvider } from 'react-query'
+import { ReactQueryDevtools } from 'react-query/devtools'
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      refetchOnMount: false,
+      keepPreviousData: true,
+    },
+  },
+})
 
 export const App = () => {
-  const [pokemonData, setPokemonData] = useState<Result[]>([])
-  const [pokemonDetails, setPokemonDetails] = useState<IPokemon[]>([])
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route
-          path='/'
-          element={
-            <FrontPage
-              pokemonData={pokemonData}
-              setPokemonData={setPokemonData}
-              pokemonDetails={pokemonDetails}
-              setPokemonDetails={setPokemonDetails}
-            />
-          }
-        />
-        <Route path='/pokemon/:id' element={<ShowPokemon />} />
-      </Routes>
-    </BrowserRouter>
+    <StrictMode>
+      <QueryClientProvider client={queryClient}>
+        <ReactQueryDevtools initialIsOpen={false} />
+        <BrowserRouter>
+          <Routes>
+            <Route path='/' element={<FrontPage />} />
+            <Route path='/pokemon/:id' element={<ShowPokemon />} />
+          </Routes>
+        </BrowserRouter>
+      </QueryClientProvider>
+    </StrictMode>
   )
 }
