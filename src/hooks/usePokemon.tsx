@@ -1,5 +1,5 @@
 import { useQuery } from 'react-query'
-import { apiUrl } from '../components/PokeDex'
+import { apiUrl } from '../pages/PokeDex'
 import { IPokemon } from '../interfaces/pokemon'
 
 export const usePokemonByID = (pokemonID: string) => {

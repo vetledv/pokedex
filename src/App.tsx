@@ -1,9 +1,10 @@
 import { StrictMode } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { FrontPage } from './pages/FrontPage'
 import { ShowPokemon } from './pages/ShowPokemon'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
+import { PokeDex } from './pages/PokeDex'
+import { Layout } from './components/Layout'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -21,10 +22,12 @@ export const App = () => {
       <QueryClientProvider client={queryClient}>
         <ReactQueryDevtools initialIsOpen={false} />
         <BrowserRouter>
-          <Routes>
-            <Route path='/' element={<FrontPage />} />
-            <Route path='/pokemon/:id' element={<ShowPokemon />} />
-          </Routes>
+          <Layout>
+            <Routes>
+              <Route path='/' element={<PokeDex />} />
+              <Route path='/pokemon/:id' element={<ShowPokemon />} />
+            </Routes>
+          </Layout>
         </BrowserRouter>
       </QueryClientProvider>
     </StrictMode>

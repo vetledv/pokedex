@@ -1,5 +1,5 @@
 import { Link, useParams } from 'react-router-dom'
-import { Nav } from '../components/Nav'
+import { Nav } from '../components/nav/Nav'
 import { PokemonInfo } from '../components/PokemonInfo'
 import { usePokemonByID } from './../hooks/usePokemon'
 
@@ -20,7 +20,6 @@ export const ShowPokemon = () => {
   if (pokemon.isLoading) {
     return (
       <>
-        <Nav />
         <div className='mt-20'></div>
         <Link to={'/'}>
           <div className='p-2 bg-orange-400 w-16'>Back</div>
@@ -32,7 +31,6 @@ export const ShowPokemon = () => {
   if (pokemon.isError) {
     return (
       <>
-        <Nav />
         <div className='mt-20'></div>
         <Link to={'/'}>
           <div className='p-2 bg-orange-400 w-16'>Back</div>
@@ -45,7 +43,6 @@ export const ShowPokemon = () => {
   if (pokemon.isFetched && pokemon.data !== undefined) {
     return (
       <>
-        <Nav />
         <div className='mt-20'></div>
         <PokemonInfo pokemon={pokemon.data}></PokemonInfo>
       </>
@@ -53,7 +50,6 @@ export const ShowPokemon = () => {
   } else {
     return (
       <>
-        <Nav />
         <div className='mt-20'></div>
         <div>oops</div>
       </>
