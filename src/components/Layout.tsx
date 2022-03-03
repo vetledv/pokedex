@@ -1,14 +1,11 @@
-import React, { ReactChildren, ReactText } from 'react'
+import { ILayout } from '../interfaces/components'
 import { Nav } from './nav/Nav'
 
-interface ILayout {
-  children?: React.ReactNode
-}
 export const Layout = ({ children }: ILayout) => {
   return (
     <>
       <Nav />
-      <div className="mt-24">
+      <div className='mt-24'>
         <main>{children}</main>
       </div>
     </>

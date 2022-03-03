@@ -16,6 +16,9 @@ module.exports = {
       xl: ['24px', '32px'],
     },
     extend: {
+      borderColor: {
+        primary: 'var(--color-border-primary)',
+      },
       backgroundColor: {
         primary: 'var(--color-bg-primary)',
         secondary: 'var(--color-bg-secondary)',

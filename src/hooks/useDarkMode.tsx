@@ -1,7 +1,5 @@
-import { Dispatch, SetStateAction, useEffect, useState } from 'react'
-
-export type themeState = 'dark' | 'light'
-export type setThemeState = Dispatch<SetStateAction<themeState>>
+import { useEffect, useState } from 'react'
+import { themeState } from '../interfaces/components'
 
 export const useDarkMode = () => {
   const [theme, setTheme] = useState<themeState>(localStorage.theme || 'dark')
