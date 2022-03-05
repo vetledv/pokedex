@@ -5,6 +5,7 @@ import { Result } from './../interfaces/pokemon'
 
 export const PokedexTile = (props: Result) => {
   const pokemon = usePokemonByName(props.name)
+
   if (pokemon.isError) {
     return (
       <div className=' bg-secondary flex flex-wrap min-w-full rounded-lg overflow-hidden'>
@@ -23,24 +24,44 @@ export const PokedexTile = (props: Result) => {
   }
   if (pokemon.isFetched && pokemon.data !== undefined) {
     return (
-      <div className='p-1 flex w-5/6 md:w-full lg:w-1/2 xl:w-5/12 2xl:w-[26%]'>
+      <div className='flex w-80'>
         <Link
           to={`/pokemon/${pokemon.data.name}`}
           key={pokemon.data.id}
-          className='bg-secondary flex flex-wrap min-w-full rounded-lg overflow-hidden'>
-          <div className='flex justify-between min-w-full px-2'>
+          className='bg-secondary flex flex-wrap min-w-full rounded-lg overflow-hidden p-2 gap-4'>
+          <div
+            className='flex justify-between min-w-full p-2'
+            style={{
+              backgroundColor: colorTypeGradients(
+                pokemon.data.types[0].type.name
+              ),
+            }}>
             <div>{pokemon.data.name}</div>
             <div>#{pokemon.data.id}</div>
           </div>
-          <div className='flex min-w-full'>
+          <div className='flex min-w-full justify-center'>
             <img src={pokemon.data.sprites.front_default} />
           </div>
+          {/* <div className='flex w-full justify-end mt-auto gap-1'>
+            {pokemon.data.types.map((type, i) => {
+              const bgColor = colorTypeGradients(type.type.name)
+              return (
+                <div
+                  key={i}
+                  style={{
+                    backgroundColor: bgColor,
+                  }}
+                  className='p-1 px-3 rounded-md text-[#2d3748] flex'>
+                  {type.type.name}
+                </div>
+              )
+            })}
+          </div> */}
         </Link>
       </div>
     )
-  } else {
-    return (
-      <div className=' bg-secondary flex flex-wrap min-w-full rounded-lg overflow-hidden'></div>
-    )
   }
+  return (
+    <div className=' bg-secondary flex flex-wrap min-w-full rounded-lg overflow-hidden'></div>
+  )
 }

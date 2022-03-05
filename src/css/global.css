@@ -9,15 +9,15 @@ body {
 }
 
 .dark {
-  --color-bg-primary: #2d3748;
-  --color-bg-secondary: #283141;
+  --color-bg-primary: #23272f;
+  --color-bg-secondary: #353b46;
   --color-bg-contrast: #e2e8f0;
   --color-text-primary: #f7fafc;
   --color-text-secondary: #e2e8f0;
   --color-text-accent: #81e6d9;
   --color-border-primary: #edeeee;
+  --color-bg-search-hover: #313741;
 }
-
 .light {
   --color-bg-primary: #ffffff;
   --color-bg-secondary: #edf2f7;
@@ -26,4 +26,17 @@ body {
   --color-text-secondary: #4a5568;
   --color-text-accent: #2b6cb0;
   --color-border-primary: #62666e;
+  --color-bg-search-hover: #f2f4f7;
+}
+
+.searchinput {
+  -webkit-appearance: none !important;
+}
+.searchinput::-webkit-search-cancel-button {
+  display: none !important;
+}
+
+.type-text {
+  text-shadow: 1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000,
+    -1px -1px 0 #000, 0px 1px 0 #000, 0px -1px 0 #000, -1px 0px 0 #000;
 }

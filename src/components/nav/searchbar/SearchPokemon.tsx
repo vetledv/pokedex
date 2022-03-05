@@ -5,6 +5,7 @@ import { useKeyPress } from '../../../hooks/useKeyPress'
 import { Result } from '../../../interfaces/pokemon'
 import { apiUrl } from '../../../pages/PokeDex'
 import { SuggestionTile } from './SuggestionTile'
+import { SearchIcon } from '../../Icons'
 
 export const SearchPokemon = () => {
   const { data } = useQuery('pokemonData', async () => {
@@ -103,10 +104,12 @@ export const SearchPokemon = () => {
   return (
     <div ref={wrapperRef} className='flex justify-self-start justify-center'>
       <div className='flex flex-wrap items-stretch'>
-        {/*selected ? selected.name : inputValue*/}
+        <div className='absolute mt-[.625rem] ml-2 pointer-events-none'>
+          <SearchIcon className='h-5 w-5'/>
+        </div>
         <input
           ref={inputRef}
-          className='px-3 py-1.5 h-10 rounded-lg dark:bg-[#99a1b3] dark:hover:bg-[#7c8291] dark:focus:bg-[#7c8291] placeholder:text-primary text-primary focus:outline-none transition ease-in-out'
+          className='searchinput pr-3 pl-10 py-1.5 h-10 rounded-lg bg-secondary hover:bg-searchhover focus:bg-searchhover focus:outline-none placeholder:text-primary text-primary shadow-inner transition ease-in-out'
           name='pokemon'
           placeholder='Search'
           value={inputValue}
@@ -128,8 +131,9 @@ export const SearchPokemon = () => {
             }
           }}
         />
+
         {isVisible && (
-          <ul className='search-list mt-12 dark:bg-[#99a1b3] bg-primary text-primary absolute w-64 rounded-lg'>
+          <ul className='search-list mt-12 bg-searchhover text-primary absolute w-64 rounded-lg'>
             {suggestions
               .filter(({ name }) => name.indexOf(inputValue.toLowerCase()) > -1)
               .map((value, i) => {
@@ -148,15 +152,6 @@ export const SearchPokemon = () => {
           </ul>
         )}
       </div>
-      {/* <IconButton
-        icon={<SearchIcon />}
-        text='Search'
-        handleClick={() => {
-          if (inputValue !== selected?.name) return
-          if (inputValue.length === 0) return
-          else navigate(path)
-        }}
-      /> */}
     </div>
   )
 }

@@ -12,7 +12,7 @@ const checkParamUndef = (param: string | undefined) => {
   } else return param
 }
 
-export const ShowPokemon = () => {
+const ShowPokemon = () => {
   const { name, id } = useParams<pokemonParams>()
   const pokemon = usePokemonByID(checkParamUndef(name || id))
 
@@ -38,7 +38,7 @@ export const ShowPokemon = () => {
   }
 
   if (pokemon.isFetched && pokemon.data !== undefined) {
-    return <PokemonInfo pokemon={pokemon.data}></PokemonInfo>
+    return <PokemonInfo {...pokemon.data}></PokemonInfo>
   } else {
     return (
       <>
@@ -50,3 +50,4 @@ export const ShowPokemon = () => {
     )
   }
 }
+export default ShowPokemon

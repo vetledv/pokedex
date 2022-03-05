@@ -1,11 +1,10 @@
-import React from 'react'
 import { useInfiniteQuery } from 'react-query'
 import { PokedexTile } from '../components/PokedexTile'
 import { IData } from '../interfaces/pokemon'
 
 export const apiUrl = 'https://pokeapi.co/api/v2/pokemon'
 
-export const PokeDex = () => {
+const PokeDex = () => {
   const fetchData = async ({ pageParam = apiUrl }) => {
     const response = await fetch(pageParam)
     const data: IData = await response.json()
@@ -21,27 +20,27 @@ export const PokeDex = () => {
   if (query.error) {
     return <div>Error: {query.error}</div>
   }
-  if (query.isFetched && query.data !== undefined) {
+  if (query.isFetched && query.data) {
     return (
-      <div className='flex flex-col'>
-        <div className='flex flex-wrap justify-center'>
-          {query.data.pages.map((data, i) => (
-            <React.Fragment key={i}>
-              {data.results.map((pokemon) => (
+      <div className='flex justify-center'>
+        <div className='flex flex-col max-w-5xl sm:w-full gap-2'>
+          <div className='flex flex-wrap justify-center gap-2 w-full'>
+            {query.data.pages.map((data, i) =>
+              data.results.map((pokemon, i) => (
                 <PokedexTile key={pokemon.name} {...pokemon}></PokedexTile>
-              ))}
-            </React.Fragment>
-          ))}
-        </div>
-        <div className='flex justify-center p-1 mb-8'>
-          <button
-            className='p-4 bg-secondary rounded-lg'
-            disabled={!query.hasNextPage || query.isFetchingNextPage}
-            onClick={() => {
-              query.fetchNextPage()
-            }}>
-            {query.isFetchingNextPage ? 'Loading' : 'Load More'}
-          </button>
+              ))
+            )}
+          </div>
+          <div className='flex justify-center'>
+            <button
+              className='p-4 bg-secondary rounded-lg'
+              disabled={!query.hasNextPage || query.isFetchingNextPage}
+              onClick={() => {
+                query.fetchNextPage()
+              }}>
+              {query.isFetchingNextPage ? 'Loading' : 'Load More'}
+            </button>
+          </div>
         </div>
       </div>
     )
@@ -49,3 +48,4 @@ export const PokeDex = () => {
     return <div></div>
   }
 }
+export default PokeDex

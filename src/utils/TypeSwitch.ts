@@ -1,64 +1,63 @@
 export const colorTypeGradients = (type: string) => {
-  //https://github.com/s1varam/pokedex/blob/master/src/utils/utils.js
-  //thank you :)
-  let color
+  let color: string
+
   switch (type) {
     case 'grass':
-      color = '#a8ff98'
+      color = '#7AC74C'
       break
     case 'poison':
-      color = '#d6a2e4'
+      color = '#A33EA1'
       break
     case 'normal':
-      color = '#dcdcdc'
+      color = '#A8A77A'
       break
     case 'fire':
-      color = '#ffb971'
+      color = '#EE8130'
       break
     case 'water':
-      color = '#8cc4e2'
+      color = '#6390F0'
       break
     case 'electric':
-      color = '#ffe662'
+      color = '#F7D02C'
       break
     case 'ice':
-      color = '#8cf5e4'
+      color = '#96D9D6'
       break
     case 'fighting':
-      color = '#da7589'
+      color = '#C22E28'
       break
     case 'ground':
-      color = '#e69a74'
+      color = '#E2BF65'
       break
     case 'flying':
-      color = '#bbc9e4'
+      color = '#A98FF3'
       break
     case 'psychic':
-      color = '#ffa5da'
+      color = '#F95587'
       break
     case 'bug':
-      color = '#bae05f'
+      color = '#A6B91A'
       break
     case 'rock':
-      color = '#C9BB8A'
+      color = '#B6A136'
       break
     case 'ghost':
-      color = '#8291e0'
+      color = '#735797'
       break
     case 'dark':
-      color = '#8e8c94'
+      color = '#705746'
       break
     case 'dragon':
-      color = '#88a2e8'
+      color = '#6F35FC'
       break
     case 'steel':
-      color = '#9fb8b9'
+      color = '#B7B7CE'
       break
     case 'fairy':
-      color = '#fdb9e9'
+      color = '#D685AD'
       break
     default:
-      color = 'gainsboro'
+      color = 'default'
       break
   }
   return color

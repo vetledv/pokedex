@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev": "parcel public/index.html",
+    "dev": "parcel serve public/index.html",
     "p:check": "prettier --check **/*.{js,jsx,ts,tsx}",
     "p:format": "prettier --write **/*.{js,jsx,ts,tsx}"
   },
