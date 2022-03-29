@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { IIconButton } from '../interfaces/components'
+import { IIconButton } from '../../interfaces/components'
 
 export const IconButton = ({ text, handleClick, icon }: IIconButton) => {
   const navigate = useNavigate()

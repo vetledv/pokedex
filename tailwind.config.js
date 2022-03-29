@@ -23,7 +23,7 @@ module.exports = {
         primary: 'var(--color-bg-primary)',
         secondary: 'var(--color-bg-secondary)',
         contrast: 'var(--color-bg-contrast)',
-        searchhover: 'var(--color-bg-search-hover)'
+        searchhover: 'var(--color-bg-search-hover)',
       },
       textColor: {
         accent: 'var(--color-text-accent)',

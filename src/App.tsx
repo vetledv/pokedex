@@ -26,14 +26,13 @@ export const App = () => {
         <BrowserRouter>
           <Layout>
             <Suspense fallback={<div>Loading...</div>}>
-            <Routes>
-              <Route path='/' element={<PokeDex />} />
-              <Route path='/pokemon/:name' element={<ShowPokemon />} />
-              <Route path='/pokemon/:id' element={<ShowPokemon />} />
-              <Route path='*' element={<div>404</div>}></Route>
-            </Routes>
+              <Routes>
+                <Route path='/' element={<PokeDex />} />
+                <Route path='/pokemon/:name' element={<ShowPokemon />} />
+                {/* <Route path='/pokemon/id/:id' element={<ShowPokemon />} /> */}
+                <Route path='*' element={<div>404</div>}></Route>
+              </Routes>
             </Suspense>
-
           </Layout>
         </BrowserRouter>
       </QueryClientProvider>

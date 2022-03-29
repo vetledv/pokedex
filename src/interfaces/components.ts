@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from 'react'
-import { Result } from './pokemon'
+import { IPokemon, IResult } from './pokemon'
 
 export type themeState = 'dark' | 'light'
 export type setThemeState = Dispatch<SetStateAction<themeState>>
@@ -15,6 +15,10 @@ export interface IIconButton {
   handleClick?: Function
 }
 
+export interface IChildrenJSXEle {
+  children?: JSX.Element
+}
+
 export interface ILayout {
   children?: React.ReactNode
 }
@@ -22,9 +26,14 @@ export interface ILayout {
 export type pokemonParams = { id?: string; name?: string }
 
 export interface ISuggestionTile {
-  value: Result
+  value: IResult
   i: number
   handleClick: Function
   isSelected: boolean
-  setSelected: Dispatch<SetStateAction<Result | undefined>>
+  setSelected: Dispatch<SetStateAction<IResult | undefined>>
+}
+
+export interface IPokemonInfo {
+  pokemon: IPokemon
+  children: JSX.Element
 }

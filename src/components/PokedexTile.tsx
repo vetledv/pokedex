@@ -1,9 +1,10 @@
+import { FC } from 'react'
 import { Link } from 'react-router-dom'
 import { usePokemonByName } from '../hooks/usePokemon'
 import { colorTypeGradients } from '../utils/TypeSwitch'
-import { Result } from './../interfaces/pokemon'
+import { IResult } from './../interfaces/pokemon'
 
-export const PokedexTile = (props: Result) => {
+export const PokedexTile: FC<IResult> = (props) => {
   const pokemon = usePokemonByName(props.name)
 
   if (pokemon.isError) {
@@ -61,7 +62,5 @@ export const PokedexTile = (props: Result) => {
       </div>
     )
   }
-  return (
-    <div className=' bg-secondary flex flex-wrap min-w-full rounded-lg overflow-hidden'></div>
-  )
+  return <div></div>
 }

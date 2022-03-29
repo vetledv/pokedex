@@ -2,10 +2,10 @@ export interface IData {
   count: number
   next: string | null
   previous: string | null
-  results: Result[]
+  results: IResult[]
 }
 
-export interface Result {
+export interface IResult {
   name: string
   url: string
   error?: Error

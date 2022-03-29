@@ -2,7 +2,7 @@ import { createRef, useEffect, useRef, useState } from 'react'
 import { useQuery } from 'react-query'
 import { generatePath, useNavigate } from 'react-router-dom'
 import { useKeyPress } from '../../../hooks/useKeyPress'
-import { Result } from '../../../interfaces/pokemon'
+import { IResult } from '../../../interfaces/pokemon'
 import { apiUrl } from '../../../pages/PokeDex'
 import { SuggestionTile } from './SuggestionTile'
 import { SearchIcon } from '../../Icons'
@@ -11,14 +11,14 @@ export const SearchPokemon = () => {
   const { data } = useQuery('pokemonData', async () => {
     const response = await fetch(apiUrl + '?limit=1126')
     const data = await response.json()
-    const result: Result[] = data.results
+    const result: IResult[] = data.results
     return result
   })
 
   const [inputValue, setInputValue] = useState<string>('') //input value
-  const [suggestions, setSuggestions] = useState<Result[]>([]) //suggest pokemon to search for
+  const [suggestions, setSuggestions] = useState<IResult[]>([]) //suggest pokemon to search for
   const [isVisible, setIsVisible] = useState<boolean>(false) //show/hide search options
-  const [selected, setSelected] = useState<Result | undefined>(undefined) //selected search option
+  const [selected, setSelected] = useState<IResult | undefined>(undefined) //selected search option
   const [selectedIndex, setSelectedIndex] = useState<number>(0) //hovered/arrow navigated item
 
   const inputRef = createRef<HTMLInputElement>()
@@ -47,7 +47,7 @@ export const SearchPokemon = () => {
 
   //set search options
   useEffect(() => {
-    const dataSuggestions: Result[] = []
+    const dataSuggestions: IResult[] = []
     if (data) {
       data.forEach((pokemon) => {
         if (
@@ -105,7 +105,7 @@ export const SearchPokemon = () => {
     <div ref={wrapperRef} className='flex justify-self-start justify-center'>
       <div className='flex flex-wrap items-stretch'>
         <div className='absolute mt-[.625rem] ml-2 pointer-events-none'>
-          <SearchIcon className='h-5 w-5'/>
+          <SearchIcon className='h-5 w-5' />
         </div>
         <input
           ref={inputRef}
@@ -131,7 +131,6 @@ export const SearchPokemon = () => {
             }
           }}
         />
-
         {isVisible && (
           <ul className='search-list mt-12 bg-searchhover text-primary absolute w-64 rounded-lg'>
             {suggestions
